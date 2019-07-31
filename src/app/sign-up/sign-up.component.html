@@ -1,0 +1,45 @@
+<div  *ngIf="!submitted" class="body">
+  <form (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" class="form-control intext" required placeholder="Name" [(ngModel)]="name" name="nm" #nm=ngModel >
+      <div [hidden]="nm.valid||nm.pristine" class="alert alert-danger errm">
+        Name required
+      </div>
+      
+    </div>
+    <div class="form-group">
+      <label for="name">Email:</label>
+      <input type="email" class="form-control intext" required placeholder="Email" [(ngModel)]="email" name="eml" #eml=ngModel validateEmail>
+     <div *ngIf=" (eml.touched || eml.dirty) && eml.errors?.invalid" class="alert alert-danger">
+          
+          Email is invalid
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="name">Username:</label>
+      <input type="text" class="form-control intext" required placeholder="Username" [(ngModel)]="username" name="uname" #uname=ngModel>
+      <div [hidden]="uname.valid||uname.pristine" class="alert alert-danger errm">
+        Username required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="name">Password:</label>
+      <input type="password" class="form-control intext" required placeholder="Password" [(ngModel)]="password" name="pwd" #pwd=ngModel validatePassword>
+    
+      <div [hidden]="pwd.valid||pwd.pristine" class="alert alert-danger errm">
+        Password Required
+      </div> 
+    </div>
+
+    <div>
+      <button type="submit" class="btn btn-primary"  [disabled]="!(uname.valid&&pwd.valid&&(!eml.errors?.invalid)&&nm.valid)">Submit</button>
+    </div>
+  </form>
+
+</div>
+
+<div [hidden]="!submitted">
+  <h4 class="success">Regestration Successful</h4>
+</div>

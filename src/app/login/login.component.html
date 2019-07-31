@@ -1,0 +1,38 @@
+
+<div *ngIf="!submitted" class="body">
+  <form >
+    <div class="form-group">
+      <label for="name">Username:</label> 
+      <input type="text" class="form-control intext" required placeholder="username" [(ngModel)]="username" name="uname" #uname=ngModel>   
+    
+      <div [hidden]="uname.valid||uname.pristine" class="alert alert-danger errm">
+        Username required
+      </div>
+    </div>
+    <br>
+    <div class="form-group ">
+      <label for="name" >Password:</label>
+      <input type="password" class="form-control intext"  placeholder="password" required [(ngModel)]="password" name="pwd" #pwd=ngModel> 
+      <div [hidden]="pwd.valid||pwd.pristine" class="alert alert-danger errm">
+        Password required
+      </div>
+    </div>
+    <br>
+    <div>
+      <button  type="submit" class="btn btn-primary" [disabled]="!(uname.valid&&pwd.valid)" (click)="onSubmit()">Login</button> &nbsp;
+      <button type="submit" class="btn btn-primary" (click)="signUp()">Sign Up</button>
+      
+      <p class="err">{{errMessage}}</p>
+    </div>
+  </form>
+  
+</div>
+<div [hidden]="!submitted">
+  <h4 class="success">Login Successful</h4>
+</div>
+
+
+
+<button (click)="addme()">asd</button>
+
+{{loginservice.getshow()|json}}

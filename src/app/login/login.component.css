@@ -1,0 +1,19 @@
+.body{
+  margin: 60px 150px;
+  display: block;
+}
+
+.intext, .errm{
+  width: 40%;
+}
+
+
+
+.err{
+  color: red;
+
+}
+
+.success{
+  color:green;
+}
